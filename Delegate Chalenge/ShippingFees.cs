@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Delegate_Chalenge
 {
-    public abstract class ShipingFees
+    public abstract class ShippingFees
     {
         delegate double MyDelegate(double price);
 

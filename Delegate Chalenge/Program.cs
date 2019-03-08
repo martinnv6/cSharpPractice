@@ -19,7 +19,7 @@ namespace Delegate_Chalenge
                 zone = Console.ReadLine();
                 Console.Write("What's the product price: ");
                 price = Convert.ToDouble(Console.ReadLine());
-                ShipingFees.CalculateFee(zone, ref price);
+                ShippingFees.CalculateFee(zone, ref price);
                 Console.WriteLine("The shipping fee is: " + price);
             } while (zone != "exit");
 
