@@ -53,6 +53,8 @@ namespace Event
         {
             Balance ba = new Balance();            
 
+
+            //
             ba.balanceChanged += (x) =>
             {
                 Console.WriteLine("The balance amount is {0}", x);
