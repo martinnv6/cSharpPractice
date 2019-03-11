@@ -9,7 +9,7 @@ namespace Sorting
     {
         static void Main(string[] args)
         {
-            int[] set = new[] {7, 3, 5, 8, 1, 9, 4, 22, 55, 11, 12, 67};
+            int[] set = new[] { 22,7, 5,2 , 55, 11, 12, 67};
 
             //BubbleSort
             Console.WriteLine($"\n\n-----------------BubbleSort------------------\n\n");
@@ -18,12 +18,12 @@ namespace Sorting
             Console.WriteLine("Number of Iterations {0}",BubbleSort.IterationsCounter);
             Console.ReadKey();
 
-            
+            set = new[] { 22, 7, 5, 2, 55, 11, 12, 67 };
             //QuickSort
             Console.WriteLine($"\n\n-----------------BubbleSort------------------\n\n");
             Console.WriteLine($"Original Array: {String.Join(",", set)}");
-            BubbleSort.Sort(set);
-            Console.WriteLine("Number of Iterations {0}", BubbleSort.IterationsCounter);
+            Console.WriteLine($"\nSorted Array: {String.Join(",", MergeSort.Sort(set))}"); 
+            Console.WriteLine("Number of Iterations {0}", MergeSort.IterationsCounter);
             Console.ReadKey();
 
         }
