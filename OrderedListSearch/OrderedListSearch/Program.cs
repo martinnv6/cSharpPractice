@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -8,22 +9,50 @@ namespace OrderedListSearch
 {
     class Program
     {
+        static int Iteration = 0;
         static void Main(string[] args)
         {
   
-            int[] orderedList = new[] { 1, 3, 4, 5, 10, 33, 55, 68 };
+            int[] orderedList = new[] { 1, 3, 4, 5, 10, 33, 55, 6 };
+            int[] itemsToFind = new[] {3, 55, 90};
+
+
 
             Console.WriteLine($"\n\n-----------------Ordered List Searching------------------\n\n");
             Console.WriteLine($"Original Array: {String.Join(",", orderedList)}");
-            Console.WriteLine(SearchItem(3, orderedList));
-            Console.WriteLine(SearchItem(55, orderedList));
-            Console.WriteLine(SearchItem(90, orderedList).HasValue);
+            if (!IsSortedList(orderedList))
+            {
+                Console.WriteLine($"\nThe list is not sorted");
+            }
+            else
+            {
+                foreach (var i in itemsToFind)
+                {
+                    Iteration = 0;
+                    Console.WriteLine($"\nItem to find: {i}");
+                    Console.WriteLine($"Index found: {SearchItem(i, orderedList)}");
+                }
+            }
+
             Console.ReadKey();
 
 
         }
 
-        private static int? SearchItem(int item, int[] set)
+        private static bool IsSortedList(int[] set)
+        {
+            for(var i = 1;i<set.Length-1;i++)
+            {
+                if (set[i] > set[i + 1])
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        private static string SearchItem(int item, int[] set)
         {
             //First and last index in the list
             int lowerIndex = 0;
@@ -38,7 +67,7 @@ namespace OrderedListSearch
                 //If the place where divide the array is the item that we are searching
                 if (item == set[middleIndex])
                 {
-                    return middleIndex;
+                    return middleIndex.ToString();
                 }
                 //If not we ignore the side where is not the item, and move the index do it again.
                 else
@@ -54,7 +83,7 @@ namespace OrderedListSearch
                 }
             }
 
-            return null;
+            return "None";
         }
     }
 }
