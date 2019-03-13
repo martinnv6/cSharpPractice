@@ -9,13 +9,14 @@ namespace Sorting
     public static class QuickSort
     {
         public static int IterationsCounter;
+        public static bool PrintIterations;
         public static int[] Sort(int[] set, int first, int last)
         {
                        
             if (first < last) { 
                 int pivotIndex = Partition(set, first,last);
-                Console.WriteLine($"PivoteIndex: {pivotIndex} Pivote: {set[pivotIndex]}");
-                Console.WriteLine($"Iteration {IterationsCounter }: {String.Join(",", set)}");
+                if (PrintIterations) Console.WriteLine($"PivoteIndex: {pivotIndex} Pivote: {set[pivotIndex]}");
+                if (PrintIterations) Console.WriteLine($"Iteration {IterationsCounter }: {String.Join(",", set)}");
                 Sort(set, first, pivotIndex - 1);
                 Sort(set, pivotIndex + 1, last);
             }

@@ -9,6 +9,7 @@ namespace Sorting
     public static class MergeSort
     {
         public static int IterationsCounter=0;
+        public static bool PrintIterations;
         public static int[] Sort(int[] set)
         {
             int middle = set.Length / 2;
@@ -78,7 +79,7 @@ namespace Sorting
                 j++;
                 k++;
             }
-            Console.WriteLine($"Iteration {IterationsCounter }: {String.Join(",", result)}");
+            if (PrintIterations) Console.WriteLine($"Iteration {IterationsCounter }: {String.Join(",", result)}");
            
             return result;
         }

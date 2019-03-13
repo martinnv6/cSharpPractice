@@ -8,6 +8,7 @@ namespace Sorting
     public static class BubbleSort
     {
         public static int IterationsCounter;
+        public static bool PrintIterations;
         public static int[] Sort(int[] set)
         {
 
@@ -22,11 +23,11 @@ namespace Sorting
                         set[j + 1] = set[j];
                         set[j] = temp;
                     }
-                    Console.WriteLine($"Iteration {IterationsCounter + 1 }: {String.Join(",", set)}");
+                    if(PrintIterations)Console.WriteLine($"Iteration {IterationsCounter + 1 }: {String.Join(",", set)}");
                     IterationsCounter++;
                 }
             }
-            return null;
+            return set;
 
         }
     }
