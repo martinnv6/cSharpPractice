@@ -30,51 +30,12 @@ namespace HashTable_UniqueFIlter
             Console.ReadKey();
 
 
-            Console.WriteLine("Enter n: ");
-            int n = Convert.ToInt32(Console.ReadLine());
-
-            int paths = NumOfPathsToDest(n, 1, 0);
-            Console.WriteLine("Number of Paths: " + paths);
-            Console.ReadKey();
+            
 
 
 
         }
 
-        public static int NumOfPathsToDest(int n, int startI, int startJ)
-        {
-            int result = 0;
-            while (startI <= n -1 && startJ <= n -1)
-            {
-                if (startI + 1 <= n-1)
-                {
-                    Console.WriteLine($"({startI},{startJ})");
-                    startI++;
-                    result += NumOfPathsToDest(n, startI, startJ);
-                    
-                }
-                if (startI >= startJ + 1)
-                {
-                    Console.WriteLine($"({startI},{startJ})");
-                    startJ++;
-                    result += NumOfPathsToDest(n, startI, startJ);
-                    
-                }
-
-                if (startI >= n-1 || startJ >= startI) break;
-
-
-
-            }
-
-            if (startI == n-1 && startJ == n-1)
-            {
-                Console.WriteLine($"({startI},{startJ})");
-                return result + 1;
-
-            }
-            return result;
-            // your code goes here
-        }
+        
     }
 }
