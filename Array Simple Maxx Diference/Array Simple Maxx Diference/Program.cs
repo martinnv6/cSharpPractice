@@ -16,7 +16,7 @@ namespace Array_Simple_Maxx_Diference
             //Array Simple Maxx
             Console.WriteLine($"\n\n-----------------Array Simple Maxx------------------\n\n");
             Console.WriteLine($"Original Array: {String.Join(",", array)}");
-            Console.WriteLine($"Original Array: {result}");
+            Console.WriteLine($"Maxx difference: {result}");
 
             Console.ReadKey();
 
@@ -44,20 +44,40 @@ namespace Array_Simple_Maxx_Diference
             }
 
 
-            //Manual Operation
             int biggest = 0;
-            foreach (var i in arrayResult)
-            {
-                if (i > biggest)
-                {
-                    biggest = i;
-                }
-            }
 
-            return biggest;
+            //Manual Operation
+            //foreach (var i in arrayResult)
+            //{
+            //    if (i > biggest)
+            //    {
+            //        biggest = i;
+            //    }
+            //}
+
+            //Using .NET
             //return arrayResult.Max();
 
+            //Using Recursive method
+            biggest = FindMax(arrayResult, 0, 0);
 
+            return biggest;
+
+
+        }
+
+        public static int FindMax(int[] array, int lastIndex, int highestNumber)
+        {
+            if (lastIndex > array.Length - 1) return highestNumber;
+            if (array[lastIndex] > highestNumber)
+            {
+                highestNumber = array[lastIndex];
+            }
+
+            lastIndex++;
+            highestNumber = FindMax(array, lastIndex, highestNumber);
+
+            return highestNumber;
         }
     }
 
