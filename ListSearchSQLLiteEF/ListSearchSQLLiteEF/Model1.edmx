@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="mainModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="data source=C:\repo\cSharpPractice\ListSearchSQLLite\waterdistributionnetwork.geodatabase" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'INSTALLDATE' in the table 'main.wCurbStopValve' was excluded.
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'ROTATION' in the table 'main.wCurbStopValve' was excluded.
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'DIAMETER' in the table 'main.wCurbStopValve' was excluded.
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'LASTUPDATE' in the table 'main.wCurbStopValve' was excluded.
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'SHAPE' in the table 'main.wCurbStopValve' was excluded.-->
+        <EntityType Name="wCurbStopValve">
+          <Key>
+            <PropertyRef Name="OBJECTID" />
+          </Key>
+          <Property Name="OBJECTID" Type="integer" Nullable="false" />
+          <Property Name="FACILITYID" Type="nvarchar" MaxLength="20" />
+          <Property Name="LOCDESC" Type="nvarchar" MaxLength="200" />
+          <Property Name="VALVETYPE" Type="nvarchar" MaxLength="30" />
+          <Property Name="NORMALLYOPEN" Type="smallint" />
+          <Property Name="TURNSTOCLOSE" Type="int" />
+          <Property Name="OPERABLE" Type="smallint" />
+          <Property Name="CURROPEN" Type="smallint" />
+          <Property Name="ENABLED" Type="smallint" />
+          <Property Name="ACTIVEFLAG" Type="smallint" />
+          <Property Name="OWNEDBY" Type="smallint" />
+          <Property Name="MAINTBY" Type="smallint" />
+          <Property Name="LASTEDITOR" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'INSTALLDATE' in the table 'main.wSystemValve' was excluded.
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'ROTATION' in the table 'main.wSystemValve' was excluded.
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'DIAMETER' in the table 'main.wSystemValve' was excluded.
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'LASTUPDATE' in the table 'main.wSystemValve' was excluded.
+warning 6005: The data type '' is currently not supported for the target Entity Framework version; the column 'SHAPE' in the table 'main.wSystemValve' was excluded.-->
+        <EntityType Name="wSystemValve">
+          <Key>
+            <PropertyRef Name="OBJECTID" />
+          </Key>
+          <Property Name="OBJECTID" Type="integer" Nullable="false" />
+          <Property Name="FACILITYID" Type="nvarchar" MaxLength="20" />
+          <Property Name="LOCDESC" Type="nvarchar" MaxLength="200" />
+          <Property Name="VALVETYPE" Type="nvarchar" MaxLength="30" />
+          <Property Name="BYPASSVALVE" Type="smallint" />
+          <Property Name="CLOCKTOCLOSE" Type="smallint" />
+          <Property Name="NORMALLYOPEN" Type="smallint" />
+          <Property Name="TURNSTOCLOSE" Type="int" />
+          <Property Name="OPERABLE" Type="smallint" />
+          <Property Name="HYDRFLAG" Type="smallint" />
+          <Property Name="CURROPEN" Type="smallint" />
+          <Property Name="ENABLED" Type="smallint" />
+          <Property Name="ACTIVEFLAG" Type="smallint" />
+          <Property Name="OWNEDBY" Type="smallint" />
+          <Property Name="MAINTBY" Type="smallint" />
+          <Property Name="LASTEDITOR" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="mainModelStoreContainer">
+          <EntitySet Name="wCurbStopValve" EntityType="Self.wCurbStopValve" store:Type="Tables" />
+          <EntitySet Name="wSystemValve" EntityType="Self.wSystemValve" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="mainModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="wCurbStopValve">
+          <Key>
+            <PropertyRef Name="OBJECTID" />
+          </Key>
+          <Property Name="OBJECTID" Type="Int64" Nullable="false" />
+          <Property Name="FACILITYID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="LOCDESC" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="VALVETYPE" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="NORMALLYOPEN" Type="Int16" />
+          <Property Name="TURNSTOCLOSE" Type="Int32" />
+          <Property Name="OPERABLE" Type="Int16" />
+          <Property Name="CURROPEN" Type="Int16" />
+          <Property Name="ENABLED" Type="Int16" />
+          <Property Name="ACTIVEFLAG" Type="Int16" />
+          <Property Name="OWNEDBY" Type="Int16" />
+          <Property Name="MAINTBY" Type="Int16" />
+          <Property Name="LASTEDITOR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="wSystemValve">
+          <Key>
+            <PropertyRef Name="OBJECTID" />
+          </Key>
+          <Property Name="OBJECTID" Type="Int64" Nullable="false" />
+          <Property Name="FACILITYID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="LOCDESC" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="VALVETYPE" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="BYPASSVALVE" Type="Int16" />
+          <Property Name="CLOCKTOCLOSE" Type="Int16" />
+          <Property Name="NORMALLYOPEN" Type="Int16" />
+          <Property Name="TURNSTOCLOSE" Type="Int32" />
+          <Property Name="OPERABLE" Type="Int16" />
+          <Property Name="HYDRFLAG" Type="Int16" />
+          <Property Name="CURROPEN" Type="Int16" />
+          <Property Name="ENABLED" Type="Int16" />
+          <Property Name="ACTIVEFLAG" Type="Int16" />
+          <Property Name="OWNEDBY" Type="Int16" />
+          <Property Name="MAINTBY" Type="Int16" />
+          <Property Name="LASTEDITOR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="mainEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="wCurbStopValve" EntityType="Self.wCurbStopValve" />
+          <EntitySet Name="wSystemValve" EntityType="Self.wSystemValve" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="mainModelStoreContainer" CdmEntityContainer="mainEntities">
+          <EntitySetMapping Name="wCurbStopValve">
+            <EntityTypeMapping TypeName="mainModel.wCurbStopValve">
+              <MappingFragment StoreEntitySet="wCurbStopValve">
+                <ScalarProperty Name="OBJECTID" ColumnName="OBJECTID" />
+                <ScalarProperty Name="FACILITYID" ColumnName="FACILITYID" />
+                <ScalarProperty Name="LOCDESC" ColumnName="LOCDESC" />
+                <ScalarProperty Name="VALVETYPE" ColumnName="VALVETYPE" />
+                <ScalarProperty Name="NORMALLYOPEN" ColumnName="NORMALLYOPEN" />
+                <ScalarProperty Name="TURNSTOCLOSE" ColumnName="TURNSTOCLOSE" />
+                <ScalarProperty Name="OPERABLE" ColumnName="OPERABLE" />
+                <ScalarProperty Name="CURROPEN" ColumnName="CURROPEN" />
+                <ScalarProperty Name="ENABLED" ColumnName="ENABLED" />
+                <ScalarProperty Name="ACTIVEFLAG" ColumnName="ACTIVEFLAG" />
+                <ScalarProperty Name="OWNEDBY" ColumnName="OWNEDBY" />
+                <ScalarProperty Name="MAINTBY" ColumnName="MAINTBY" />
+                <ScalarProperty Name="LASTEDITOR" ColumnName="LASTEDITOR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wSystemValve">
+            <EntityTypeMapping TypeName="mainModel.wSystemValve">
+              <MappingFragment StoreEntitySet="wSystemValve">
+                <ScalarProperty Name="OBJECTID" ColumnName="OBJECTID" />
+                <ScalarProperty Name="FACILITYID" ColumnName="FACILITYID" />
+                <ScalarProperty Name="LOCDESC" ColumnName="LOCDESC" />
+                <ScalarProperty Name="VALVETYPE" ColumnName="VALVETYPE" />
+                <ScalarProperty Name="BYPASSVALVE" ColumnName="BYPASSVALVE" />
+                <ScalarProperty Name="CLOCKTOCLOSE" ColumnName="CLOCKTOCLOSE" />
+                <ScalarProperty Name="NORMALLYOPEN" ColumnName="NORMALLYOPEN" />
+                <ScalarProperty Name="TURNSTOCLOSE" ColumnName="TURNSTOCLOSE" />
+                <ScalarProperty Name="OPERABLE" ColumnName="OPERABLE" />
+                <ScalarProperty Name="HYDRFLAG" ColumnName="HYDRFLAG" />
+                <ScalarProperty Name="CURROPEN" ColumnName="CURROPEN" />
+                <ScalarProperty Name="ENABLED" ColumnName="ENABLED" />
+                <ScalarProperty Name="ACTIVEFLAG" ColumnName="ACTIVEFLAG" />
+                <ScalarProperty Name="OWNEDBY" ColumnName="OWNEDBY" />
+                <ScalarProperty Name="MAINTBY" ColumnName="MAINTBY" />
+                <ScalarProperty Name="LASTEDITOR" ColumnName="LASTEDITOR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
