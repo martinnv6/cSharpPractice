@@ -1,4 +1,0 @@
-https://github.com/ErikEJ/SqlCeToolbox/wiki/EF6-workflow-with-SQLite-DDEX-provider
-
-https://www.youtube.com/watch?v=sAAKu_SsaoA&t=201s
-https://github.com/ErikEJ/SqlCeToolbox/issues/710
