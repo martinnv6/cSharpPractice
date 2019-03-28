@@ -147,27 +147,27 @@ namespace LaloChallenge
             Hashtable hstblRows = new Hashtable();
             for (int i = 0; i < set.Length; i++)
             {
-                for (int j = 0; j < set[1].Length; j++)
+                for (int j = 0; j < set[0].Length; j++)
                 {                    
                     if (set[i][j] == 0)
                     {
-                        hstblColumns[i] = 0;
-                        hstblRows[j] = 0;
+                        hstblColumns[j] = 0;
+                        hstblRows[i] = 0;
                     }                    
                 }
             }
             for (int i = 0; i < result.Length; i++)
             {
-                for (int j = 0; j < result[1].Length; j++)
+                int[] row = new int[result.Length];
+                for (int j = 0; j < set[0].Length; j++)
                 {
-                    int value = set[i][j];                   
+                    row[j] = set[i][j];                  
                     if (hstblRows.Contains(i) || hstblColumns.Contains(j))
                     {
-                        value = 0;
-                    }
-                    result[i][j] = value;
-
+                        row[j] = 0;
+                    }                   
                 }
+                result[i] = row;
             }
 
             return result;

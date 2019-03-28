@@ -66,8 +66,13 @@ namespace LaloChallenge
                         {
                             amounts[amountsRowItr] = Array.ConvertAll(Console.ReadLine().Split(' '), amountsTemp => Convert.ToInt32(amountsTemp));
                         }
-                        int result = Challenge1.ArrayChallenge(amounts);
-                        Console.WriteLine(result);
+                        var result = Challenge1.ArrayChallenge(amounts);
+                        Console.WriteLine("\n\nResult:\n");
+                        foreach (int[] i in result)
+                        {
+                            Console.Write("{0} \n", String.Join(" ",i));
+                        }
+                        //Console.WriteLine(result);
                         break;
 
 
