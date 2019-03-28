@@ -38,6 +38,9 @@ namespace LaloChallenge
                         Console.WriteLine("\n"+Challenge1.Anagram(str1,str2));                        
                         break;
                     case "5":
+                        Console.WriteLine("Word to reverse: ");
+                        string strToReverse = Console.ReadLine();
+                        Console.WriteLine("\n" + String.Join("",Challenge1.Reverse(strToReverse)));
                         break;
 
                 }

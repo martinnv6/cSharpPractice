@@ -82,5 +82,19 @@ namespace LaloChallenge
 
             return true;
         }
+
+        public static char[] Reverse(string str)
+        {
+            int index = str.Length;
+            char[] result = new char[index];
+            index --;//last index
+            foreach (char item in str)
+            {
+                result[index] = item;
+                index --;
+            }
+
+            return result;
+        }
     }
 }
