@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,6 +18,22 @@ namespace LaloChallenge
             }
 
             return 4*result;
+        }
+
+        public static string FizzBuzz(int num)
+        {
+            string result = "";
+            if (num % 3 == 0)
+            {
+                result += "fizz";
+            }
+
+            if (num % 5 == 0)
+            {
+                result += "buzz";
+            }
+
+            return result;
         }
     }
 }
