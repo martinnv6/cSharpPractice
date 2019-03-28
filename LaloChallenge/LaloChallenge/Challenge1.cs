@@ -13,6 +13,7 @@ namespace LaloChallenge
     {
         public static double Summation()
         {
+            
             double result = 0;
             for (int k = 1; k <= 10000000;k++)
             {
@@ -22,17 +23,24 @@ namespace LaloChallenge
             return 4*result;
         }
 
-        public static string FizzBuzz(int num)
+        public static string FizzBuzz()
         {
             string result = "";
-            if (num % 3 == 0)
+            for (int i = 1; i <= 200; i++)
             {
-                result += "fizz";
-            }
+                string aux = "";
+                if (i % 3 == 0)
+                {
+                    aux += "fizz";
+                }
 
-            if (num % 5 == 0)
-            {
-                result += "buzz";
+                if (i % 5 == 0)
+                {
+                    aux += "buzz";
+                }
+
+                result =result + "\n" + (aux != "" ? aux : i.ToString());
+
             }
 
             return result;

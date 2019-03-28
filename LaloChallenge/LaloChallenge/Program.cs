@@ -24,14 +24,8 @@ namespace LaloChallenge
                     case "1":
                         Console.WriteLine(Challenge1.Summation());
                         break;
-                    case "2":
-                        int num;
-                        do
-                        {
-                            Console.WriteLine("Insert a number between 1 and 200");
-                            num = Convert.ToInt32(Console.ReadLine());
-                        } while (num < 1 && num > 200);
-                        Console.WriteLine(Challenge1.FizzBuzz(num));
+                    case "2":                                              
+                        Console.WriteLine(Challenge1.FizzBuzz());
                         break;
                     case "3":
                         Console.WriteLine("Aun no lo hago :)");
@@ -42,6 +36,8 @@ namespace LaloChallenge
                         Console.WriteLine("Second word: ");
                         string str2 = Console.ReadLine();
                         Console.WriteLine("\n"+Challenge1.Anagram(str1,str2));                        
+                        break;
+                    case "5":
                         break;
 
                 }
