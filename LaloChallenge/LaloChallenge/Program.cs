@@ -39,9 +39,15 @@ namespace LaloChallenge
                         break;
                     case "5":
                         Console.WriteLine("Word to reverse: ");
+                        string strToCompress = Console.ReadLine();
+                        Console.WriteLine("\n" + String.Join("", Challenge1.Compress(strToCompress)));
+                        break;
+                    case "6":
+                        Console.WriteLine("Word to reverse: ");
                         string strToReverse = Console.ReadLine();
                         Console.WriteLine("\n" + String.Join("",Challenge1.Reverse(strToReverse)));
                         break;
+                    
 
                 }
             } while (msg != "exit");

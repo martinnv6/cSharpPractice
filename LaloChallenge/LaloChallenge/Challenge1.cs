@@ -83,6 +83,7 @@ namespace LaloChallenge
             return true;
         }
 
+
         public static char[] Reverse(string str)
         {
             int index = str.Length;
@@ -95,6 +96,48 @@ namespace LaloChallenge
             }
 
             return result;
+        }
+
+        internal static string Compress(string strToCompress)
+        {            
+            int lastindex = strToCompress.Length-1;
+            string result="";
+            
+            int counter = 0;
+
+            //Loop over the original string to fill the result string
+            for (int i = 0; i <= lastindex; i++ )
+            {
+                //First loop
+                if (i == 0)
+                {
+                    result += strToCompress[i];                                        
+                    counter = 1;                                       
+                    continue;
+                }
+
+                //If the actual character is the same than the last then increment the counter
+                if (strToCompress[i] == strToCompress[i - 1])
+                {
+                    counter++;
+                    
+                }
+                else
+                {
+                    //If no then add the las counter and the new character, also reset the counter.
+                    result += counter.ToString() + strToCompress[i];
+                    counter = 1;
+                }
+
+                if (i == lastindex)//LastCount
+                {
+                    result += counter.ToString();
+
+                }
+            }
+
+            //Only if is smaller
+            return result.Length < strToCompress.Length ? result: strToCompress;
         }
     }
 }
