@@ -47,6 +47,13 @@ namespace LaloChallenge
                         string strToReverse = Console.ReadLine();
                         Console.WriteLine("\n" + String.Join("",Challenge1.Reverse(strToReverse)));
                         break;
+                    case "7":
+                        Console.WriteLine("Firt number: ");
+                        int int1 = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("Second number: ");
+                        int int2 = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("\n" + Challenge1.Swap(int1, int2));
+                        break;
                     
 
                 }

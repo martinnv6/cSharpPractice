@@ -13,14 +13,14 @@ namespace LaloChallenge
     {
         public static double Summation()
         {
-            
+
             double result = 0;
-            for (int k = 1; k <= 10000000;k++)
+            for (int k = 1; k <= 10000000; k++)
             {
                 result += (Math.Pow(-1, k - 1)) / (2 * k - 1);
             }
 
-            return 4*result;
+            return 4 * result;
         }
 
         public static string FizzBuzz()
@@ -39,7 +39,7 @@ namespace LaloChallenge
                     aux += "buzz";
                 }
 
-                result =result + "\n" + (aux != "" ? aux : i.ToString());
+                result = result + "\n" + (aux != "" ? aux : i.ToString());
 
             }
 
@@ -72,7 +72,7 @@ namespace LaloChallenge
                 return false;
             }
 
-            for(int i =0; i<sorted1.Length;i++)
+            for (int i = 0; i < sorted1.Length; i++)
             {
                 if (sorted1[i] != sorted2[i])
                 {
@@ -88,31 +88,31 @@ namespace LaloChallenge
         {
             int index = str.Length;
             char[] result = new char[index];
-            index --;//last index
+            index--;//last index
             foreach (char item in str)
             {
                 result[index] = item;
-                index --;
+                index--;
             }
 
             return result;
         }
 
         internal static string Compress(string strToCompress)
-        {            
-            int lastindex = strToCompress.Length-1;
-            string result="";
-            
+        {
+            int lastindex = strToCompress.Length - 1;
+            string result = "";
+
             int counter = 0;
 
             //Loop over the original string to fill the result string
-            for (int i = 0; i <= lastindex; i++ )
+            for (int i = 0; i <= lastindex; i++)
             {
                 //First loop
                 if (i == 0)
                 {
-                    result += strToCompress[i];                                        
-                    counter = 1;                                       
+                    result += strToCompress[i];
+                    counter = 1;
                     continue;
                 }
 
@@ -120,7 +120,7 @@ namespace LaloChallenge
                 if (strToCompress[i] == strToCompress[i - 1])
                 {
                     counter++;
-                    
+
                 }
                 else
                 {
@@ -137,7 +137,15 @@ namespace LaloChallenge
             }
 
             //Only if is smaller
-            return result.Length < strToCompress.Length ? result: strToCompress;
+            return result.Length < strToCompress.Length ? result : strToCompress;
+        }
+
+        public static string Swap(int int1, int int2)
+        {
+            int1 = int1 + int2;
+            int2 = int1 - int2;
+            int1 = int1 - int2;
+            return int1 + "," + int2;
         }
     }
 }
