@@ -140,6 +140,35 @@ namespace LaloChallenge
             return result.Length < strToCompress.Length ? result : strToCompress;
         }
 
+        internal static int[][] ArrayChallenge(int[][] set)
+        {
+            int[][] result = new int[set.Length][];
+            Hashtable hstblColumns = new Hashtable();
+            Hashtable hstblRows = new Hashtable();
+            for (int i = 0; i < set.Length; i++)
+            {
+                for (int j = 0; j < set[1].Length; j++)
+                {
+                    int value = set[i][j];
+                    if (value == 0)
+                    {
+                        hstblColumns[i] = 0;
+                        hstblRows[j] = 0;
+                    }
+
+                    if (hstblRows.Contains(i) || hstblColumns.Contains(j))
+                    {
+                        value = 0;
+                    }
+
+                    result[i][j] = value;
+
+                }
+            }
+
+            return result;
+        }
+
         public static string Swap(int int1, int int2)
         {
             int1 = int1 + int2;

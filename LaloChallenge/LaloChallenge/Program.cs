@@ -24,7 +24,7 @@ namespace LaloChallenge
                     case "1":
                         Console.WriteLine(Challenge1.Summation());
                         break;
-                    case "2":                                              
+                    case "2":
                         Console.WriteLine(Challenge1.FizzBuzz());
                         break;
                     case "3":
@@ -35,7 +35,7 @@ namespace LaloChallenge
                         string str1 = Console.ReadLine();
                         Console.WriteLine("Second word: ");
                         string str2 = Console.ReadLine();
-                        Console.WriteLine("\n"+Challenge1.Anagram(str1,str2));                        
+                        Console.WriteLine("\n" + Challenge1.Anagram(str1, str2));
                         break;
                     case "5":
                         Console.WriteLine("Word to reverse: ");
@@ -45,7 +45,7 @@ namespace LaloChallenge
                     case "6":
                         Console.WriteLine("Word to reverse: ");
                         string strToReverse = Console.ReadLine();
-                        Console.WriteLine("\n" + String.Join("",Challenge1.Reverse(strToReverse)));
+                        Console.WriteLine("\n" + String.Join("", Challenge1.Reverse(strToReverse)));
                         break;
                     case "7":
                         Console.WriteLine("Firt number: ");
@@ -54,7 +54,23 @@ namespace LaloChallenge
                         int int2 = Convert.ToInt32(Console.ReadLine());
                         Console.WriteLine("\n" + Challenge1.Swap(int1, int2));
                         break;
-                    
+                    case "8":
+                        Console.WriteLine("Indicate the M and N for the array separated by a space: ");
+                        string[] MN = Console.ReadLine().Split(' ');
+                        int M = Convert.ToInt32(MN[0]);
+                        int N = Convert.ToInt32(MN[1]);
+                        int[][] amounts = new int[N][];
+                        Console.WriteLine("Indicate each row of the array (each number separated by a space): ");
+                        Console.WriteLine("Example: \n2 3 4\n8 4 6\n8 0 2\n\n\n");
+                        for (int amountsRowItr = 0; amountsRowItr < N; amountsRowItr++)
+                        {
+                            amounts[amountsRowItr] = Array.ConvertAll(Console.ReadLine().Split(' '), amountsTemp => Convert.ToInt32(amountsTemp));
+                        }
+                        int result = Challenge1.ArrayChallenge(amounts);
+                        Console.WriteLine(result);
+                        break;
+
+
 
                 }
             } while (msg != "exit");
