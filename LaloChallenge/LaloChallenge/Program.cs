@@ -28,7 +28,11 @@ namespace LaloChallenge
                         Console.WriteLine(Challenge1.FizzBuzz());
                         break;
                     case "3":
-                        Console.WriteLine("Aun no lo hago :)");
+                        Console.WriteLine("Base: ");
+                        int baseInt = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("String(Numbers): ");
+                        string numbers = Console.ReadLine();
+                        Console.WriteLine("\n" + Challenge1.ConvertToBase(baseInt, numbers));
                         break;
                     case "4":
                         Console.WriteLine("Firt word: ");

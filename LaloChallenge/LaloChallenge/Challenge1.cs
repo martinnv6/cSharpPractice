@@ -180,5 +180,20 @@ namespace LaloChallenge
             int1 = int1 - int2;
             return int1 + "," + int2;
         }
+
+        public static string ConvertToBase(int @base, string chars)
+        {
+            string result = string.Empty;
+            int targetBase = chars.Length;
+
+            do
+            {
+                result = chars[@base % targetBase] + result;
+                @base = @base / targetBase;
+            }
+            while (@base > 0);
+
+            return result;
+        }
     }
 }
