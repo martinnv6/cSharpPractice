@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using Sorting;
 
 namespace LaloChallenge
 {
@@ -34,6 +36,43 @@ namespace LaloChallenge
             }
 
             return result;
+        }
+
+        public static bool Anagram(string str1, string str2)
+        {
+
+            //Hashtable hashtbl1 = new Hashtable();
+            //Hashtable hashtbl2 = new Hashtable();
+
+            ////Loop over each item to add into the hashtable
+            //foreach (var item in str1)
+            //{
+            //    hashtbl1[item] = 0;
+            //}
+
+            //foreach (var item in str2)
+            //{
+            //    hashtbl2[item] = 0;
+            //}
+            //Lo de arriba no jalo por que pueden estar repetidas las letras y eso es omitido por las tablas hash
+            //var asasd = str1.ToCharArray().Select(Convert.ToInt32).ToArray();
+            var sorted1 = QuickSort.Sort(str1.ToCharArray().Select(Convert.ToInt32).ToArray(), 0, str1.Length - 1);
+            var sorted2 = QuickSort.Sort(str2.ToCharArray().Select(Convert.ToInt32).ToArray(), 0, str1.Length - 1);
+
+            if (str1.Length != str2.Length)
+            {
+                return false;
+            }
+
+            for(int i =0; i<sorted1.Length;i++)
+            {
+                if (sorted1[i] != sorted2[i])
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
     }
 }

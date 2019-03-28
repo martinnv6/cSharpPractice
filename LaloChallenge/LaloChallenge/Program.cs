@@ -33,6 +33,17 @@ namespace LaloChallenge
                         } while (num < 1 && num > 200);
                         Console.WriteLine(Challenge1.FizzBuzz(num));
                         break;
+                    case "3":
+                        Console.WriteLine("Aun no lo hago :)");
+                        break;
+                    case "4":
+                        Console.WriteLine("Firt word: ");
+                        string str1 = Console.ReadLine();
+                        Console.WriteLine("Second word: ");
+                        string str2 = Console.ReadLine();
+                        Console.WriteLine("\n"+Challenge1.Anagram(str1,str2));                        
+                        break;
+
                 }
             } while (msg != "exit");
 
