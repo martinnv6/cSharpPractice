@@ -148,19 +148,23 @@ namespace LaloChallenge
             for (int i = 0; i < set.Length; i++)
             {
                 for (int j = 0; j < set[1].Length; j++)
-                {
-                    int value = set[i][j];
-                    if (value == 0)
+                {                    
+                    if (set[i][j] == 0)
                     {
                         hstblColumns[i] = 0;
                         hstblRows[j] = 0;
-                    }
-
+                    }                    
+                }
+            }
+            for (int i = 0; i < result.Length; i++)
+            {
+                for (int j = 0; j < result[1].Length; j++)
+                {
+                    int value = set[i][j];                   
                     if (hstblRows.Contains(i) || hstblColumns.Contains(j))
                     {
                         value = 0;
                     }
-
                     result[i][j] = value;
 
                 }
