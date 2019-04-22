@@ -26,10 +26,10 @@ namespace NetCoreJwtAuth.Controllers
         [HttpPost("authenticate")]
         public IActionResult Authenticate([FromBody]User userParam)
         {
-            var user = _userService.Authenticate(userParam.Username, userParam.System);
+            var user = _userService.Authenticate(userParam.Key);
 
             if (user == null)
-                return BadRequest(new { message = "Username or system is incorrect" });
+                return BadRequest(new { message = "Key is incorrect" });
 
             return Ok(user);
         }
@@ -44,9 +44,9 @@ namespace NetCoreJwtAuth.Controllers
 
         
         [HttpGet("{id}")]
-        public IActionResult GetById(int id)
+        public IActionResult GetById(string key)
         {
-            var user = _userService.GetById(id);
+            var user = _userService.GetById(key);
 
             if (user == null)
             {
@@ -54,8 +54,8 @@ namespace NetCoreJwtAuth.Controllers
             }
 
             // only allow admins to access other user records
-            var currentUserId = int.Parse(User.Identity.Name);
-            if (id != currentUserId && !User.IsInRole(Role.SystemA))
+            var currentUserId = User.Identity.Name;
+            if (key != currentUserId && !User.IsInRole(Role.SystemA))
             {
                 return Forbid();
             }

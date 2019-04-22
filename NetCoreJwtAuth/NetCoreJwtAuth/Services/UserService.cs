@@ -4,40 +4,46 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using MongoDB.Driver;
 using NetCoreJwtAuth.Entities;
 using NetCoreJwtAuth.Helpers;
+using NetCoreJwtAuth.Models;
 
 namespace NetCoreJwtAuth.Services
 {
 
     public interface IUserService
     {
-        User Authenticate(string username, string password);
-        IEnumerable<User> GetAll();
-        User GetById(int id);
+        Users Authenticate(string keyval);
+        IEnumerable<Users> GetAll();
+        Users GetById(string id);
     }
 
     public class UserService : IUserService
     {
         // users hardcoded for simplicity, store in a db with hashed passwords in production applications
-        private List<User> _users = new List<User>
-        {
-            new User { Id = 1, FirstName = "Admin", LastName = "User", Username = "admin", System = "A", Role = Role.SystemA },
-            new User { Id = 2, FirstName = "Normal", LastName = "User", Username = "user", System = "B", Role = Role.SystemB }
-        };
+        //private List<User> _users = new List<User>
+        //{
+        //    new User { Id = 1, FirstName = "Admin", LastName = "User", Username = "admin", System = "A", Role = Role.SystemA },
+        //    new User { Id = 2, FirstName = "Normal", LastName = "User", Username = "user", System = "B", Role = Role.SystemB }
+        //};
 
         private readonly AppSettings _appSettings;
-
-        public UserService(IOptions<AppSettings> appSettings)
+        private readonly IMongoCollection<Users> _users;
+        public UserService(IOptions<AppSettings> appSettings, IConfiguration config)
         {
             _appSettings = appSettings.Value;
+            var client = new MongoClient(config.GetConnectionString("UserDb"));
+            var database = client.GetDatabase("local");
+            _users = database.GetCollection<Users>("users");
         }
 
-        public User Authenticate(string username, string system)
+        public Users Authenticate(string keyval)
         {
-            var user = _users.SingleOrDefault(x => x.Username == username && x.System == system);
+            var user = _users.Find<Users>(x => x.Key == keyval).FirstOrDefault();
 
             // return null if user not found
             if (user == null)
@@ -50,14 +56,15 @@ namespace NetCoreJwtAuth.Services
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim(ClaimTypes.Name, user.Id.ToString()),
-                    new Claim(ClaimTypes.Role, user.Role)
+                    new Claim(ClaimTypes.System, user.System.ToString()),
+                    new Claim(ClaimTypes.Authentication, user.Key.ToString())
                 }),
                 Expires = DateTime.UtcNow.AddDays(7),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
             var token = tokenHandler.CreateToken(tokenDescriptor);
             user.Token = tokenHandler.WriteToken(token);
+            user.Key = keyval;
 
             // remove system before returning
             //user.System = null;
@@ -65,18 +72,15 @@ namespace NetCoreJwtAuth.Services
             return user;
         }
 
-        public IEnumerable<User> GetAll()
+        public IEnumerable<Users> GetAll()
         {
             // return users without system
-            return _users.Select(x =>
-            {
-                return x;
-            });
+            return _users.Find<Users>(user => true).ToList();
         }
 
-        public User GetById(int id)
+        public Users GetById(string keyVal)
         {
-            var user = _users.FirstOrDefault(x => x.Id == id);
+            var user = _users.Find<Users>(book => book.Key == keyVal).FirstOrDefault();
 
             // return user without system
             //if (user != null)
